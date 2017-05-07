@@ -1,0 +1,37 @@
+﻿@model Client.ViewModel.Admin.AdminPanelViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Table</h2>
+
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <td>Email</td>
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>MiddleName</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>            
+            @foreach (var item in Model.UserList)
+            {
+                <tr>
+                    <th>@item.Email</th>
+                    <th>@item.FirstName</th>
+                    <th>@item.LastName</th>
+                    <th>@item.MiddleName</th>
+                    <th>
+                        <select id='isinz' width="144" style="height:19px; width:100px; text-align:center;">
+                            <option id="UserDelete" 
+                                    onclick="location.href='@Url.Action("Details", "Admin", new { Email = item.Email })'">Details</option>
+                            <option id="UserDelete" onclick="location.href='@Url.Action("Delete", "Admin")'">Delete</option>
+                        </select>
+                    </th>
+                </tr>
+            }                
+    </tbody>
+</table>
