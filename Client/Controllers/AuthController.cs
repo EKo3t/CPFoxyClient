@@ -75,7 +75,7 @@ namespace Client.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         [Route("Register")]
         public ActionResult Register(RegisterViewModel model)
@@ -89,6 +89,37 @@ namespace Client.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Login", "Auth");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Error while getting response");
+                    return View();
+                }
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [Route("ChangePassword")]
+        public ActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);
+                var response =
+                    client.PostAsJsonAsync(
+                    "http://localhost:53063/api/Account/ChangePassword",
+                    model).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

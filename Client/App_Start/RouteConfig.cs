@@ -25,6 +25,12 @@ namespace Client
                 defaults: new { action = "Register", controller = "Auth", id = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+                name: "ChangePassword",
+                url: "{controller}/{action}/{id}",
+                defaults: new { action = "ChangePassword", controller = "Auth", id = UrlParameter.Optional }
+            );
+
         }
     }
 }

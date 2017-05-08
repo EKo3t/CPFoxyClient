@@ -139,6 +139,7 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Auth\ChangePassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -184,6 +185,7 @@
     <Compile Include="Providers\RequestProvider.cs" />
     <Compile Include="ViewModels\Admin\AdminPanelViewModel.cs" />
     <Compile Include="ViewModels\Admin\UserTableModel.cs" />
+    <Compile Include="ViewModels\Auth\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Auth\LoginViewModel.cs" />
     <Compile Include="ViewModels\Auth\RegisterViewModel.cs" />
   </ItemGroup>
