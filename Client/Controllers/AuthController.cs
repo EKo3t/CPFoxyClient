@@ -1,5 +1,5 @@
 ﻿using Client.Models.UserSettings;
-using Client.ViewModel.Auth;
+using Client.ViewModels.Auth;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -82,18 +82,26 @@ namespace Client.Controllers
         {
             using (var client = new HttpClient())
             {
-                var response =
-                    client.PostAsJsonAsync(
-                    "http://localhost:53063/api/Account/Register",
-                    model).Result;
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    return RedirectToAction("Login", "Auth");
-                }
-                else
+                    var response =
+                        client.PostAsJsonAsync(
+                        "http://localhost:53063/api/Account/Register",
+                        model).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Login", "Auth");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Error while getting response");
+                        return View();
+                    }
+                } catch(Exception ex)
                 {
-                    ModelState.AddModelError("", "Error while getting response");
-                    return View();
+                    ModelState.AddModelError("", "Cannot connect to server");
+                    return View(model);
                 }
             }
         }

@@ -4,14 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Client.ViewModels.Auth
+namespace Client.ViewModels.Admin
 {
-    public class LoginViewModel
+    public class UserCreateViewModel
     {
-        [Required(ErrorMessage = "Please enter non empty email")]
+        [Required]
+        [EmailAddress]
+        [DataType(DataType.EmailAddress)]
         [StringLength(100, ErrorMessage = "Too long email", MinimumLength = 5)]
         [Display(Name = "Email")]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter non empty password")]
@@ -19,5 +20,12 @@ namespace Client.ViewModels.Auth
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+        
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
+
+        [DataType(DataType.Date)]
+        public string BirthDate { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Client.ViewModel.Admin.AdminPanelViewModel
+﻿@model Client.ViewModels.Admin.AdminPanelViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -25,13 +25,15 @@
                     <th>@item.LastName</th>
                     <th>@item.MiddleName</th>
                     <th>
-                        <select id='isinz' width="144" style="height:19px; width:100px; text-align:center;">
-                            <option id="UserDelete" 
-                                    onclick="location.href='@Url.Action("Details", "Admin", new { Email = item.Email })'">Details</option>
-                            <option id="UserDelete" onclick="location.href='@Url.Action("Delete", "Admin")'">Delete</option>
-                        </select>
+                        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Details", "Admin", new { Email = item.Email})'">
+                            <span class="glyphicons glyphicons-user"></span> Details
+                        </button>
+                        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("DeleteUser", "Admin", new { Email = item.Email})'">
+                            <span class="glyphicons glyphicons-user-remove"></span> Delete
+                        </button>
                     </th>
                 </tr>
             }                
     </tbody>
 </table>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("CreateUser", "Admin")'">Create User</button>

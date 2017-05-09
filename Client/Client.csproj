@@ -139,6 +139,8 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\CreateUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -183,9 +185,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\RequestProvider.cs" />
     <Compile Include="ViewModels\Admin\AdminPanelViewModel.cs" />
+    <Compile Include="ViewModels\Admin\UserCreateViewModel.cs" />
     <Compile Include="ViewModels\Admin\UserTableModel.cs" />
     <Compile Include="ViewModels\Auth\LoginViewModel.cs" />
     <Compile Include="ViewModels\Auth\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\UserDetails.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
