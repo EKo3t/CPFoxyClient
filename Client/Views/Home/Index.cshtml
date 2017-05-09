@@ -7,5 +7,10 @@
 
 @if (CurrentUser.HasRole("Admin"))
 {
-    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Admin")'">User Table</button>    
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Admin")'">User Table</button> 
 }
+
+@* Enable this once you have account confirmation enabled for password reset functionality *@
+<p>
+    @Html.ActionLink("Change your password", "ChangePassword", "Auth")
+</p>
