@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Client.ViewModel.Auth
+namespace Client.ViewModels.Auth
 {
     public class ChangePasswordViewModel
     {
