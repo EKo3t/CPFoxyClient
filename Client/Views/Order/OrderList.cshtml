@@ -1,0 +1,44 @@
+﻿@model Client.ViewModels.Order.OrderTableVM
+@{
+    ViewBag.Title = "OrderList";
+}
+
+<h2>OrderList</h2>
+
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <td>OrderTime</td>
+            <td>StartAddress</td>
+            <td>EndAddress</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Orders)
+            {
+            <tr>
+                <th>@item.OrderTime</th>
+                <th>@item.StartAddress</th>
+                <th>@item.EndAddress</th>
+                <th>
+                    <button disabled="(@item.Status != null) && (@item.Status.Name == 'Ended')" 
+                            type="button" 
+                            class="btn btn-default" 
+                            onclick="location.href='@Url.Action("Edit", "Order", new { order = item})'">
+                        <span class="glyphicons glyphicons-user"></span> Edit
+                    </button>
+                    <button type="button" 
+                            class="btn btn-default" 
+                            onclick="location.href='@Url.Action("Delete", "Order", new { email = Model.UserEmail, order = item })'">
+                        <span class="glyphicons glyphicons-user-remove"></span> Delete
+                    </button>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

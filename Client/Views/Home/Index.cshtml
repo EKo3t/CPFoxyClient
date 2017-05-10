@@ -9,8 +9,12 @@
 {
     <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Admin")'">User Table</button> 
 }
+@if (CurrentUser.isAuthenticated())
+{
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("OrderList", "Order")'">List of orders</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Order")'">Make new order</button>
+}
 
-@* Enable this once you have account confirmation enabled for password reset functionality *@
 <p>
     @Html.ActionLink("Change your password", "ChangePassword", "Auth")
 </p>

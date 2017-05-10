@@ -41,6 +41,14 @@ namespace Client.Models.UserSettings
             return Instance != null;
         }
 
+        public static string GetEmail
+        {
+            get
+            {
+                return Instance != null && Instance.info != null ? Instance.info.Email : String.Empty;
+            }
+        }
+
         public static bool HasRole(String role)
         {
             using (var client = new HttpClient())
@@ -57,6 +65,6 @@ namespace Client.Models.UserSettings
                     return false;
             }
             return false;
-        }
+        }       
     }
 }

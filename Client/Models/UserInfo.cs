@@ -13,9 +13,9 @@ namespace Client.Models.UserSettings
             Password = password;
         }
 
-        private string Email { get; set; }
+        public string Email { get; set; }
 
-        private string Password { get; set; }
+        public string Password { get; set; }
 
 
     }
