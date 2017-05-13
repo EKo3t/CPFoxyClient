@@ -2,8 +2,13 @@
 @{
     ViewBag.Title = "User Details";
 }
-
 <h2>@ViewBag.Title</h2>
+
+<script type="text/javascript">
+    $(function () {
+        $('#BirthDate').datepicker();
+    })
+</script>
 
 @using (Html.BeginForm("Details", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
