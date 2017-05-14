@@ -2,8 +2,13 @@
 @{
     ViewBag.Title = "User Details";
 }
-
 <h2>@ViewBag.Title</h2>
+
+<script type="text/javascript">
+    $(function () {
+        $('#BirthDate').datepicker();
+    })
+</script>
 
 @using (Html.BeginForm("Details", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -31,7 +36,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
+            @Html.EditorFor(m => m.BirthDate, new { @class = "form-control" })
         </div>
     </div>
     @Html.HiddenFor(m => m.Email)

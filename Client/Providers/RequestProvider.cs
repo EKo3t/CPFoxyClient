@@ -23,10 +23,17 @@ namespace Client.Providers
             using (var client = new HttpClient())
             {
                 string json = JsonConvert.SerializeObject(obj);
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);
+                try
+                {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);
+                }
+                catch
+                {
+
+                }
                 var response = client.PostAsJsonAsync(ServerAdress + address, obj).Result;
                 return response;
             }
         }
     }
-}
+}   
