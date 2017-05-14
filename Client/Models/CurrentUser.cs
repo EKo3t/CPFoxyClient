@@ -24,7 +24,8 @@ namespace Client.Models.UserSettings
             AccessToken = accessToken;
         }
 
-        public static CurrentUser TryCreateInstance(string email, string password, Dictionary<string, string> accessToken)
+        public static CurrentUser TryCreateInstance(string email, string password, 
+            Dictionary<string, string> accessToken)
         {
             if (Instance == null && accessToken != null && email != null && password != null)
                 Instance = new CurrentUser(email, password, accessToken);
@@ -36,9 +37,12 @@ namespace Client.Models.UserSettings
             Instance = null;
         }
 
-        public static bool isAuthenticated()
+        public static bool IsAuthenticated
         {
-            return Instance != null;
+            get
+            {
+                return Instance != null;
+            }            
         }
 
         public static string GetEmail
@@ -55,7 +59,8 @@ namespace Client.Models.UserSettings
             {
                 string url = "http://localhost:53063/api/Account/Role";
                 var values = new Dictionary<string, string> { { "role", "Admin" } };
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.
+                    AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);
                 var response = client.PostAsJsonAsync(url, values).Result;
                 if (response.IsSuccessStatusCode)
                 {

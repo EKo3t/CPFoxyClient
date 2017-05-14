@@ -1,0 +1,56 @@
+﻿@model Client.ViewModels.Manager.ManagerVM
+
+@{
+    ViewBag.Title = "Panel";
+}
+
+<br />
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <td>Order.Id</td>
+            <td>OrderTime</td>
+            <td>StartAddress</td>
+            <td>EndAddress</td>
+            <td>Status</td>
+            <td>UserEmail</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Orders)
+        {
+            <tr>
+                <th>@item.Id</th>
+                <th>@item.OrderTime</th>
+                <th>@item.StartAddress</th>
+                <th>@item.EndAddress</th>
+                <th>
+                    <select onchange="location.href='@Url.Action("Update", "Order")'">
+                        @foreach (Client.Models.OrderStatus status in Client.Tools.StatusLoader.GetAll())
+                        {
+                            <option label="@status.Name" 
+                                    value="@status.Name"/>
+                        }
+                    </select>
+                </th>
+                <th>@item.Email</th>
+                <th>
+                    <button disabled="@ViewOperations.isDisabledStatusEdit(item.Status)"
+                            type="button"
+                            class="btn btn-default"
+                            onclick="location.href='@Url.Action("Edit", "Order", new { order = item})'">
+                        <span class="glyphicons glyphicons-user"></span> Edit
+                    </button>
+                    <button type="button"
+                            class="btn btn-default"
+                            onclick="location.href='@Url.Action("Delete", "Order", new { email = item.Email, order = item })'">
+                        <span class="glyphicons glyphicons-user-remove"></span> Delete
+                    </button>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

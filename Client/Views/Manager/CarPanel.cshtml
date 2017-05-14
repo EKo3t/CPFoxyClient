@@ -1,0 +1,38 @@
+﻿@model Client.ViewModels.Manager.ManagerVM
+
+@{
+    ViewBag.Title = "CarList";
+}
+
+<h2>CarList</h2>
+
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <td>Mark</td>
+            <td>Model</td>
+            <td>Color</td>
+            <td>UsedByDriver</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cars)
+        {
+            <tr>
+                <th>@item.CarMark</th>
+                <th>@item.CarModel</th>
+                <th>@item.CarColor</th>
+                <th>false</th>
+                <th>
+                    <button type="button"
+                            class="btn btn-default"
+                            onclick="location.href='@Url.Action("DeleteDriver", "Manager", new { id = item.Id})'">
+                        <span class="glyphicons glyphicons-user-remove"></span> Delete
+                    </button>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Car")'">Create Car</button>

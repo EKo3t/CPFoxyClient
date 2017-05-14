@@ -24,5 +24,13 @@ namespace Client.ViewModels.Auth
         [StringLength(100, ErrorMessage = "Too short password's confirm", MinimumLength = 6)]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
+        public string BirthDate { get; set; }
     }
 }

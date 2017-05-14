@@ -16,13 +16,13 @@
     </thead>
     <tbody>
         @foreach (var item in Model.Orders)
-            {
+        {
             <tr>
                 <th>@item.OrderTime</th>
                 <th>@item.StartAddress</th>
                 <th>@item.EndAddress</th>
                 <th>
-                    <button disabled="(@item.Status != null) && (@item.Status.Name == 'Ended')" 
+                    <button disabled="@ViewOperations.isDisabledStatusEdit(item.Status)" 
                             type="button" 
                             class="btn btn-default" 
                             onclick="location.href='@Url.Action("Edit", "Order", new { order = item})'">

@@ -26,6 +26,7 @@ namespace Client.ViewModels.Admin
         public string MiddleName { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         public string BirthDate { get; set; }
     }
 }

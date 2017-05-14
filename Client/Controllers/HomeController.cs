@@ -12,7 +12,7 @@ namespace Client.Controllers
         // GET: Home        
         public ActionResult Index()
         {
-            if (!CurrentUser.isAuthenticated())
+            if (!CurrentUser.IsAuthenticated)
             {
                 ViewBag.RedirectErrorMessage = "You are not logged in.";
                 return RedirectToAction("Login", "Auth");

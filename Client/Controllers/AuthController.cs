@@ -50,7 +50,6 @@ namespace Client.Controllers
                     client.PostAsync("http://localhost:53063/Token", content).Result;
                 return response;
             }
-
         }
 
         public ActionResult Logout()

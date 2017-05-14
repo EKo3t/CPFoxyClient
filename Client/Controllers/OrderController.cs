@@ -16,7 +16,7 @@ namespace Client.Controllers
         // GET: Order
         public ActionResult OrderList()
         {
-            if (!CurrentUser.isAuthenticated())
+            if (!CurrentUser.IsAuthenticated)
                 return RedirectToAction("Login", "Auth");
             var response = RequestProvider.CallGetMethod("api/Order/List");
             OrderTableVM model = new OrderTableVM();
@@ -40,7 +40,7 @@ namespace Client.Controllers
         [HttpPost]
         public ActionResult Create(OrderViewModel model)
         {
-            if (!CurrentUser.isAuthenticated())
+            if (!CurrentUser.IsAuthenticated)
                 return RedirectToAction("Login", "Auth");
             var response = RequestProvider.CallPostMethodJson("api/Order/Create", model);
             if (response.IsSuccessStatusCode)
@@ -48,6 +48,38 @@ namespace Client.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Delete(OrderViewModel order, string email = null)
+        {
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
+            order.Email = email == null ? CurrentUser.GetEmail : email;
+            var response = RequestProvider.CallPostMethodJson("api/Order/Delete", order);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("OrderList", "Order");
+            }
+            return RedirectToAction("OrderList", "Order");                        
+        }
+
+        [HttpGet]
+        public ActionResult Edit(OrderViewModel model)
+        {
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Update(OrderViewModel model)
+        {
+            var response = RequestProvider.CallPostMethodJson("api/Order/Update", model);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("OrderList", "Order");
+            }
+            else
+                return RedirectToAction("Edit", model);
         }
     }
 }

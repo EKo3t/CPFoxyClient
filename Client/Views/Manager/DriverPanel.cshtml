@@ -1,0 +1,42 @@
+﻿@model Client.ViewModels.Manager.ManagerVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Driver Panel</h2>
+
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>MiddleName</td>
+            <td>CarSpec</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Drivers)
+        {
+            <tr>
+                <th>@item.UserDetails.FirstName</th>
+                <th>@item.UserDetails.LastName</th>
+                <th>@item.UserDetails.MiddleName</th>
+                <th>@item.Car.CarMark @item.Car.CarModel</th>
+                <th>
+                    <button type="button"
+                            class="btn btn-default"
+                            onclick="location.href='@Url.Action("InBlackList", "Manager", new { Email = item.UserDetails.Email})'">
+                        <span class="glyphicons glyphicons-user"></span> Details
+                    </button>
+                    <button type="button"
+                            class="btn btn-default"
+                            onclick="location.href='@Url.Action("DeleteDriver", "Manager", new { email = item.UserDetails.Email})'">
+                        <span class="glyphicons glyphicons-user-remove"></span> Delete
+                    </button>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -13,7 +13,7 @@
             <td>FirstName</td>
             <td>LastName</td>
             <td>MiddleName</td>
-            <td>Actions</td>
+            <td style="width: 250px">Actions</td>
         </tr>
     </thead>
     <tbody>            
@@ -28,9 +28,15 @@
                         <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Details", "Admin", new { Email = item.Email})'">
                             <span class="glyphicons glyphicons-user"></span> Details
                         </button>
-                        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("DeleteUser", "Admin", new { Email = item.Email})'">
-                            <span class="glyphicons glyphicons-user-remove"></span> Delete
+                        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("CreateDriver", "Manager", new { email = item.Email})'">
+                            <span class="glyphicons glyphicons-user-remove"></span> As driver
                         </button>
+                        @if (CurrentUser.IsAuthenticated && CurrentUser.HasRole("Admin"))
+                        {
+                            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("DeleteUser", "Admin", new { Email = item.Email })'">
+                                <span class="glyphicons glyphicons-user-remove"></span> Delete
+                            </button>
+                        }
                     </th>
                 </tr>
             }                

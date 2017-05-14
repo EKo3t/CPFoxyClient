@@ -5,14 +5,20 @@
 
 <h2>@ViewBag.Title</h2>
 
-@if (CurrentUser.HasRole("Admin"))
-{
-    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Admin")'">User Table</button> 
-}
-@if (CurrentUser.isAuthenticated())
+@if (CurrentUser.IsAuthenticated)
 {
     <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("OrderList", "Order")'">List of orders</button>
     <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Order")'">Make new order</button>
+}
+@if (CurrentUser.IsAuthenticated && CurrentUser.HasRole("Admin") || CurrentUser.HasRole("Manager"))
+{
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Admin")'">User Table</button> 
+}
+@if (CurrentUser.IsAuthenticated && CurrentUser.HasRole("Manager") || CurrentUser.HasRole("Manager"))
+{
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("OrderPanel", "Manager")'">Order panel</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("DriverPanel", "Manager")'">Driver panel</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("CarPanel", "Manager")'">Car panel</button>
 }
 
 <p>

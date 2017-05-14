@@ -9,6 +9,8 @@ namespace Client.ViewModels.Order
 {
     public class OrderViewModel
     {
+        public Guid Id { get; set; }
+
         [Required]
         [DataType(DataType.Date)]
         public DateTime OrderTime { get; set; }
@@ -19,5 +21,7 @@ namespace Client.ViewModels.Order
         public string EndAddress { get; set; }
 
         public OrderStatus Status { get; set; }
+
+        public String Email { get; set; }
     }
 }
