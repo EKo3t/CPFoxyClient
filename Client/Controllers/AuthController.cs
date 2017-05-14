@@ -59,6 +59,8 @@ namespace Client.Controllers
 
         public ActionResult Logout()
         {
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);
@@ -114,6 +116,8 @@ namespace Client.Controllers
         [HttpGet]
         public ActionResult ChangePassword()
         {
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
             return View();
         }
 
@@ -122,6 +126,8 @@ namespace Client.Controllers
         [Route("ChangePassword")]
         public ActionResult ChangePassword(ChangePasswordViewModel model)
         {
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);

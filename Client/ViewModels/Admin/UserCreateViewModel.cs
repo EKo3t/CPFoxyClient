@@ -11,14 +11,14 @@ namespace Client.ViewModels.Admin
         [Required]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
-        [StringLength(100, ErrorMessage = "Too long email", MinimumLength = 5)]
-        [Display(Name = "Email")]
+        [StringLength(100, ErrorMessage = "Слишком длинная почта", MinimumLength = 5)]
+        [Display(Name = "Почта")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Please enter non empty password")]
-        [StringLength(100, ErrorMessage = "Too short password", MinimumLength = 6)]
+        [Required(ErrorMessage = "Введите непустой пароль")]
+        [StringLength(100, ErrorMessage = "Слишком короткий пароль", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
         
         public string FirstName { get; set; }
@@ -27,6 +27,6 @@ namespace Client.ViewModels.Admin
 
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
     }
 }

@@ -1,19 +1,18 @@
 ﻿@model Client.ViewModels.Manager.ManagerVM
 
 @{
-    ViewBag.Title = "CarList";
+    ViewBag.Title = "Список автомобилей";
 }
 
-<h2>CarList</h2>
+<h2>@ViewBag.Title</h2>
 
 <table class="table table-bordered table-condensed table-hover">
     <thead>
         <tr>
-            <td>Mark</td>
-            <td>Model</td>
-            <td>Color</td>
-            <td>UsedByDriver</td>
-            <td>Actions</td>
+            <td>Марка</td>
+            <td>Модель</td>
+            <td>Цвет</td>
+            <td>Действия</td>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +22,6 @@
                 <th>@item.CarMark</th>
                 <th>@item.CarModel</th>
                 <th>@item.CarColor</th>
-                <th>false</th>
                 <th>
                     <button type="button"
                             class="btn btn-default"

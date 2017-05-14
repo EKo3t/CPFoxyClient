@@ -13,6 +13,7 @@ namespace Client.ViewModels.Order
 
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
         public DateTime OrderTime { get; set; }
 
         [Required]
@@ -23,6 +24,8 @@ namespace Client.ViewModels.Order
         public OrderStatus Status { get; set; }
 
         public ServiceVM Service { get; set; }
+
+        public Guid ServiceId { get; set; }
 
         public String Email { get; set; }
     }

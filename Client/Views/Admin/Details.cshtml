@@ -4,11 +4,15 @@
 }
 <h2>@ViewBag.Title</h2>
 
-<script type="text/javascript">
-    $(function () {
-        $('#BirthDate').datepicker();
-    })
-</script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/datepicker.js"></script>
+</head>
 
 @using (Html.BeginForm("Details", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -36,7 +40,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.EditorFor(m => m.BirthDate, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BirthDate, "{0:dd.MM.yyyy}", new { @class = "form-control datepicker" })
         </div>
     </div>
     @Html.HiddenFor(m => m.Email)

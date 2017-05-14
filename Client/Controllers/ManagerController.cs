@@ -64,10 +64,13 @@ namespace Client.Controllers
                 var userDetails = JsonConvert.DeserializeObject<UserDetails>(json);
                 model = new DriverVM();
                 model.UserDetails = new UserDetails();
-                model.UserDetails.FirstName = userDetails.FirstName;
-                model.UserDetails.LastName = userDetails.LastName;
-                model.UserDetails.MiddleName = userDetails.MiddleName;
-                model.UserDetails.BirthDate = userDetails.BirthDate;
+                if (userDetails != null)
+                {
+                    model.UserDetails.FirstName = userDetails.FirstName;
+                    model.UserDetails.LastName = userDetails.LastName;
+                    model.UserDetails.MiddleName = userDetails.MiddleName;
+                    model.UserDetails.BirthDate = userDetails.BirthDate;
+                }
             }
             return View(model);
         }
@@ -82,7 +85,7 @@ namespace Client.Controllers
             var values = new Dictionary<string, string>
             {
                 { "email", model.UserDetails.Email },
-                { "car", model.Car.Id.ToString() }
+                { "car", model.CarID.ToString() }
             };
             var response = RequestProvider.CallPostMethodJson("api/Driver/Create", values);
             if (response.IsSuccessStatusCode)
@@ -145,7 +148,7 @@ namespace Client.Controllers
             {
                 result.Add(new SelectListItem {
                     Text = item.CarMark + " " + item.CarModel + ", " + item.CarColor,
-                    Value = item.ToString()
+                    Value = item.Id.ToString()
                 });
             }
             return result;

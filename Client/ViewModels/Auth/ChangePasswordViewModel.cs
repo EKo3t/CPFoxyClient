@@ -8,23 +8,23 @@ namespace Client.ViewModels.Auth
 {
     public class ChangePasswordViewModel
     {
-        [Required(ErrorMessage = "Please enter non empty current password")]
-        [StringLength(100, ErrorMessage = "Too long current password", MinimumLength = 6)]
+        [Required(ErrorMessage = "Введите непустой пароль")]
+        [StringLength(100, ErrorMessage = "Слишком короткий пароль", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Текущий пароль")]
         public string OldPassword { get; set; }
 
 
-        [Required(ErrorMessage = "Please enter non empty new password")]
+        [Required(ErrorMessage = "Введите непустой пароль")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Новый пароль")]
         public string NewPassword { get; set; }
 
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Подтверждение пароля")]
+        [Compare("NewPassword", ErrorMessage = "Новые пароли не совпадают.")]
         public string ConfirmPassword { get; set; }
 
         /* [Required(ErrorMessage = "Please enter non empty email")]

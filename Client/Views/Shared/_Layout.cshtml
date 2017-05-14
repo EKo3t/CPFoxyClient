@@ -19,23 +19,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Go Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("На главную", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     @if (!CurrentUser.IsAuthenticated)
                     {
                         <li>                       
-                            @Html.ActionLink("Register", "Register", "Auth", new { area = "" }, new { @class = "navbar-brand" })
+                            @Html.ActionLink("Регистрация", "Register", "Auth", new { area = "" }, new { @class = "navbar-brand" })
                         </li>
                         <li>
-                            @Html.ActionLink("Login", "Login", "Auth", new { area = "" }, new { @class = "navbar-brand" })
+                            @Html.ActionLink("Вход", "Login", "Auth", new { area = "" }, new { @class = "navbar-brand" })
                         </li>
                     }
                     @if (CurrentUser.IsAuthenticated)
                     {
                         <li>
-                            @Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "navbar-brand" })
+                            @Html.ActionLink("Выход", "Logout", "Auth", new { area = "" }, new { @class = "navbar-brand" })
                         </li>
                     }
                 </ul>

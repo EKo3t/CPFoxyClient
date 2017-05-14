@@ -18,8 +18,10 @@ namespace Client.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            if (!CurrentUser.IsAuthenticated || !CurrentUser.HasRole("Admin"))
+            if (!CurrentUser.IsAuthenticated)
                 return RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin"))
+                return RedirectToAction("Index", "Home");
             var model = new AdminPanelViewModel();
             model.UserList = getUserTableList();
             return View(model);
@@ -41,8 +43,10 @@ namespace Client.Controllers
 
         public ActionResult DeleteUser(String email)
         {
-            if (!CurrentUser.IsAuthenticated || !CurrentUser.HasRole("Admin"))
+            if (!CurrentUser.IsAuthenticated)
                 RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin"))
+                return RedirectToAction("Index", "Home");
             var values = new Dictionary<string, string> { { "email", email } };
             var response = RequestProvider.CallPostMethodJson("api/Admin/Delete", values);
             if (!response.IsSuccessStatusCode)
@@ -55,7 +59,10 @@ namespace Client.Controllers
         [HttpGet]
         public ActionResult CreateUser(string email)
         {
-
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin"))
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -77,8 +84,10 @@ namespace Client.Controllers
         [HttpGet]
         public ActionResult Details(String email)
         {
-            if (!CurrentUser.IsAuthenticated || !CurrentUser.HasRole("Admin"))
+            if (!CurrentUser.IsAuthenticated)
                 RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin"))
+                return RedirectToAction("Index", "Home");
             UserDetails userDetails = new UserDetails();
             var values = new Dictionary<string, string> { { "email", email } };
             var response = RequestProvider.CallPostMethodJson("api/Account/UsrInf", values);
@@ -93,8 +102,10 @@ namespace Client.Controllers
         [HttpPost]
         public ActionResult Details(UserDetails model)
         {
-            if (!CurrentUser.IsAuthenticated || !CurrentUser.HasRole("Admin"))
+            if (!CurrentUser.IsAuthenticated)
                 RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin"))
+                return RedirectToAction("Index", "Home");
             var response = RequestProvider.CallPostMethodJson("api/Account/ChangeInfo", model);
             if (response.IsSuccessStatusCode)
             {

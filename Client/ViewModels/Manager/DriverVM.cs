@@ -9,6 +9,6 @@ namespace Client.ViewModels.Manager
     {
         public UserDetails UserDetails { get; set; }
 
-        public CarVM Car { get; set; }
+        public string CarID { get; set; }
     }
 }

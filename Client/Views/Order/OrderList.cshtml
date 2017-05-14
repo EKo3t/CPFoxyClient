@@ -1,24 +1,25 @@
 ﻿@model Client.ViewModels.Order.OrderTableVM
 @{
-    ViewBag.Title = "OrderList";
+    ViewBag.Title = "Список заказов";
 }
 
-<h2>OrderList</h2>
+<h2>@ViewBag.Title</h2>
 
 <table class="table table-bordered table-condensed table-hover">
     <thead>
         <tr>
-            <td>OrderTime</td>
-            <td>StartAddress</td>
-            <td>EndAddress</td>
-            <td>Actions</td>
+            <td>Время заказа</td>
+            <td>Начальный адрес</td>
+            <td>Конечный адрес</td>
+            <td>Услуга</td>
+            <td>Действия</td>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Orders)
         {
             <tr>
-                <th>@item.OrderTime</th>
+                <th>@item.OrderTime<th>
                 <th>@item.StartAddress</th>
                 <th>@item.EndAddress</th>
                 <th>

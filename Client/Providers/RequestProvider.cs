@@ -13,7 +13,15 @@ namespace Client.Providers
         {
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);
+                try
+                {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest };
+                }
                 var response = client.GetAsync(ServerAdress + address).Result;
                 return response;
             }            

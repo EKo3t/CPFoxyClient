@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Client.Tools
 {
@@ -27,6 +28,21 @@ namespace Client.Tools
                 }
             }
             return Enumerable.Empty<ServiceVM>().ToList();
+        }
+
+        public static List<SelectListItem> GetAllAsSelectList()
+        {
+            var result = new List<SelectListItem>();
+            var list = GetAll();
+            foreach (ServiceVM service in list)
+            {
+                result.Add(new SelectListItem
+                {
+                    Text = service.Name,
+                    Value = service.Id.ToString()
+                });
+            }
+            return result;
         }
     }
 }

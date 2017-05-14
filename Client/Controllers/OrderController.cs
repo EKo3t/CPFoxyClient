@@ -1,5 +1,6 @@
 ﻿using Client.Models.UserSettings;
 using Client.Providers;
+using Client.Tools;
 using Client.ViewModels.Order;
 using Newtonsoft.Json;
 using System;

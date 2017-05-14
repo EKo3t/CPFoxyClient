@@ -3,7 +3,7 @@
     ViewBag.Title = "CreateOrder";
 }
 
-<h2>CreateOrder</h2>
+<h2>Создать заказ</h2>
 
 @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -14,7 +14,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.OrderTime, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.OrderTime, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.OrderTime, "{0:dd.MM.yyyy HH:mm}", new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
@@ -26,7 +26,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Service, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Service, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.ServiceId, Client.Tools.ServiceLoader.GetAllAsSelectList())
         </div>
     </div>
     <div class="form-group">

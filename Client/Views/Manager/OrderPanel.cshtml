@@ -8,20 +8,19 @@
 <table class="table table-bordered table-condensed table-hover">
     <thead>
         <tr>
-            <td>Order.Id</td>
-            <td>OrderTime</td>
-            <td>StartAddress</td>
-            <td>EndAddress</td>
-            <td>Status</td>
-            <td>UserEmail</td>
-            <td>Actions</td>
+            <td>Время заказа</td>
+            <td>Начальный адрес</td>
+            <td>Конечный адрес</td>
+            <td>Статус</td>
+            <td>Услуга</td>
+            <td>Пользователь</td>
+            <td>Действия</td>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Orders)
         {
             <tr>
-                <th>@item.Id</th>
                 <th>@item.OrderTime</th>
                 <th>@item.StartAddress</th>
                 <th>@item.EndAddress</th>
@@ -34,6 +33,7 @@
                         }
                     </select>
                 </th>
+                <th>@item.Service.Name</th>
                 <th>@item.Email</th>
                 <th>
                     <button disabled="@ViewOperations.isDisabledStatusEdit(item.Status)"

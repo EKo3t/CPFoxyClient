@@ -8,21 +8,21 @@ namespace Client.ViewModels.Auth
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Please enter non empty email")]
-        [StringLength(100, ErrorMessage = "Too long email", MinimumLength = 5)]
+        [Required(ErrorMessage = "Введите непустую почту")]
+        [StringLength(100, ErrorMessage = "Слишком длинная почта", MinimumLength = 5)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Please enter non empty password")]
-        [StringLength(100, ErrorMessage = "Too short password", MinimumLength = 6)]
+        [Required(ErrorMessage = "Введите непустой пароль")]
+        [StringLength(100, ErrorMessage = "Слишком короткий пароль", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Please enter non empty email")]
+        [Required(ErrorMessage = "Введите непустое подтверждение пароля")]
         [DataType(DataType.Password)]
-        [StringLength(100, ErrorMessage = "Too short password's confirm", MinimumLength = 6)]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [StringLength(100, ErrorMessage = "Подтверждение пароля слишком короткое", MinimumLength = 6)]
+        [Compare("Password", ErrorMessage = "Пароли не совпадают.")]
         public string ConfirmPassword { get; set; }
 
         public string FirstName { get; set; }
@@ -31,6 +31,6 @@ namespace Client.ViewModels.Auth
 
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
     }
 }

@@ -8,16 +8,16 @@ namespace Client.ViewModels.Auth
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Please enter non empty email")]
-        [StringLength(100, ErrorMessage = "Too long email", MinimumLength = 5)]
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Введите непустую почту")]
+        [StringLength(100, ErrorMessage = "Слишком длинная почта", MinimumLength = 5)]
+        [Display(Name = "Почта")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Please enter non empty password")]
-        [StringLength(100, ErrorMessage = "Too short password", MinimumLength = 6)]
+        [Required(ErrorMessage = "Введите непустой пароль")]
+        [StringLength(100, ErrorMessage = "Слишком короткий пароль", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
     }
 }
