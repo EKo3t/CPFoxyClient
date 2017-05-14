@@ -39,14 +39,14 @@
     <div class="form-group">
         @Html.Label("Cars", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(u => u.Car, Client.Controllers.ManagerController.getCarSelectList())
-            @*<select name="@Html.NameFor(u => u.Car)" class="selectpicker" style="height: 30px">
+            @*@Html.DropDownListFor(m => m.Car, Client.Controllers.ManagerController.getCarSelectList())*@
+            <select id="@Html.IdFor(u => u.Car.Id)" name="@Html.NameFor(u => u.Car)" class="selectpicker" style="height: 30px">
                 <option disabled selected>Choose a car</option>
                 @foreach (Client.ViewModels.Manager.CarVM car in Client.Controllers.ManagerController.getCarList())
                 {
                     <option label="@car.CarMark @car.CarModel, @car.CarColor" value="@car" />
                 }
-            </select>*@
+            </select>
         </div>
     </div>
     <div class="form-group">

@@ -206,6 +206,8 @@
     <Content Include="Views\Manager\CreateDriver.cshtml" />
     <Content Include="Views\Manager\CarPanel.cshtml" />
     <Content Include="Views\Car\Create.cshtml" />
+    <Content Include="Views\Manager\ServicePanel.cshtml" />
+    <Content Include="Views\Manager\CreateService.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -245,6 +247,8 @@
     <Compile Include="Models\ViewOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\RequestProvider.cs" />
+    <Compile Include="Tools\Loader.cs" />
+    <Compile Include="Tools\ServiceLoader.cs" />
     <Compile Include="Tools\StatusLoader.cs" />
     <Compile Include="ViewModels\Admin\AdminPanelViewModel.cs" />
     <Compile Include="ViewModels\Admin\UserCreateViewModel.cs" />
@@ -258,6 +262,7 @@
     <Compile Include="ViewModels\Manager\ManagerVM.cs" />
     <Compile Include="ViewModels\Order\OrderTableVM.cs" />
     <Compile Include="ViewModels\Order\OrderViewModel.cs" />
+    <Compile Include="ViewModels\ServiceVM.cs" />
     <Compile Include="ViewModels\UserDetails.cs" />
   </ItemGroup>
   <ItemGroup>

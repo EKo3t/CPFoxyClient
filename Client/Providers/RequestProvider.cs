@@ -1,5 +1,6 @@
 ﻿using Client.Models.UserSettings;
 using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 
 namespace Client.Providers
@@ -27,9 +28,10 @@ namespace Client.Providers
                 {
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentUser.Instance.AccessToken["access_token"]);
                 }
-                catch
+                catch(Exception ex)
                 {
-
+                    Console.WriteLine(ex.StackTrace);
+                    return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest };
                 }
                 var response = client.PostAsJsonAsync(ServerAdress + address, obj).Result;
                 return response;

@@ -13,5 +13,7 @@ namespace Client.ViewModels.Manager
         public List<DriverVM> Drivers { get; set; }
 
         public List<CarVM> Cars { get; set; }
+
+        public List<ServiceVM> Services { get; set; }
     }
 }

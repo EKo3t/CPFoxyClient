@@ -3,6 +3,7 @@ using Client.Providers;
 using Client.ViewModels;
 using Client.ViewModels.Manager;
 using Client.ViewModels.Order;
+using Client.Tools;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -86,9 +87,9 @@ namespace Client.Controllers
             var response = RequestProvider.CallPostMethodJson("api/Driver/Create", values);
             if (response.IsSuccessStatusCode)
             {
-
+                return RedirectToAction("Index", "Admin");
             }
-            return RedirectToAction("Index", "Admin");
+            return View(model);
         }
 
         [HttpGet]
@@ -160,6 +161,45 @@ namespace Client.Controllers
                 return RedirectToAction("Index", "Home");
             ManagerVM model = new ManagerVM();
             model.Cars = getCarList();
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult ServicePanel()
+        {
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin") || !CurrentUser.HasRole("Manager"))
+                return RedirectToAction("Index", "Home");
+            List<ServiceVM> serviceList = ServiceLoader.GetAll();
+            ManagerVM managerModel = new ManagerVM();
+            managerModel.Services = serviceList;
+            return View(managerModel);
+        }
+
+        [HttpGet]
+        public ActionResult CreateService()
+        {
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin") || !CurrentUser.HasRole("Manager"))
+                return RedirectToAction("Index", "Home");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateService(ServiceVM model)
+        {
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin") || !CurrentUser.HasRole("Manager"))
+                return RedirectToAction("Index", "Home");
+            var response = RequestProvider.CallPostMethodJson("api/Service/Create", model);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ServicePanel", "Manager");
+            }
+            ModelState.AddModelError("", "Не все данные заполнены верно");
             return View(model);
         }
     }

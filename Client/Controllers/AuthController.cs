@@ -37,6 +37,11 @@ namespace Client.Controllers
 
         private static HttpResponseMessage GetTokenResponse(string email, string password)
         {
+            if (email == null || email == "" || password == null || password == "")
+                return new HttpResponseMessage()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
             var pairs = new List<KeyValuePair<string, string>>
                         {
                             new KeyValuePair<string, string>( "grant_type", "password" ),

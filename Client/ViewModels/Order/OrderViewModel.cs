@@ -22,6 +22,8 @@ namespace Client.ViewModels.Order
 
         public OrderStatus Status { get; set; }
 
+        public ServiceVM Service { get; set; }
+
         public String Email { get; set; }
     }
 }

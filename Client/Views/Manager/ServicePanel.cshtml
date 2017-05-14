@@ -1,0 +1,38 @@
+﻿@model Client.ViewModels.Manager.ManagerVM
+
+@{
+    ViewBag.Title = "Service Panel";
+}
+
+<h2>Список услуг</h2>
+
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <td>Название</td>
+            <td>Описание</td>
+            <td>Стартовая цена</td>
+            <td>Цена за километр</td>
+            <td>Действия</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Services)
+        {
+            <tr>
+                <th>@item.Name</th>
+                <th>@item.Description</th>
+                <th>@item.StartPrice</th>
+                <th>@item.PriceForKilometer</th>
+                <th>
+                    <button type="button"
+                            class="btn btn-default"
+                            onclick="location.href='@Url.Action("DeleteService", "Manager", new { id = item.Id})'">
+                        <span class="glyphicons glyphicons-user-remove"></span> Delete
+                    </button>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("CreateService", "Manager")'">Create Service</button>
