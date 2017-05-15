@@ -4,16 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>User Table</h2>
+<h2>Список пользователей</h2>
 
 <table class="table table-bordered table-condensed table-hover">
     <thead>
         <tr>
-            <td>Email</td>
-            <td>FirstName</td>
-            <td>LastName</td>
-            <td>MiddleName</td>
-            <td style="width: 250px">Actions</td>
+            <td>Почта</td>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Отчество</td>
+            <td style="width: 250px">Действия</td>
         </tr>
     </thead>
     <tbody>            
@@ -42,4 +42,4 @@
             }                
     </tbody>
 </table>
-<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("CreateUser", "Admin")'">Create User</button>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("CreateUser", "Admin")'">Создать пользователя</button>

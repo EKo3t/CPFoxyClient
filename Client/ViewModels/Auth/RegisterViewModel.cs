@@ -29,7 +29,7 @@ namespace Client.ViewModels.Auth
         public string LastName { get; set; }
         public string MiddleName { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Введите дату по формату")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime BirthDate { get; set; }
     }

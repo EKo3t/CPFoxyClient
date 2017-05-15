@@ -208,6 +208,7 @@
     <Content Include="Views\Car\Create.cshtml" />
     <Content Include="Views\Manager\ServicePanel.cshtml" />
     <Content Include="Views\Manager\CreateService.cshtml" />
+    <Content Include="Views\Order\Info.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -260,6 +261,7 @@
     <Compile Include="ViewModels\Manager\CarVM.cs" />
     <Compile Include="ViewModels\Manager\DriverVM.cs" />
     <Compile Include="ViewModels\Manager\ManagerVM.cs" />
+    <Compile Include="ViewModels\Order\OrderInfoVM.cs" />
     <Compile Include="ViewModels\Order\OrderTableVM.cs" />
     <Compile Include="ViewModels\Order\OrderViewModel.cs" />
     <Compile Include="ViewModels\ServiceVM.cs" />

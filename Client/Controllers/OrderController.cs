@@ -46,7 +46,7 @@ namespace Client.Controllers
             var response = RequestProvider.CallPostMethodJson("api/Order/Create", model);
             if (response.IsSuccessStatusCode)
             {                
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Info", model);
             }
             return View();
         }
@@ -81,6 +81,15 @@ namespace Client.Controllers
             }
             else
                 return RedirectToAction("Edit", model);
+        }
+
+        [HttpGet]
+        public ActionResult Info(OrderViewModel model)
+        {
+            OrderInfoVM infoVM = new OrderInfoVM();
+            infoVM.OrderTime = model.OrderTime.ToString("dd:MM:yyyy HH:mm");
+            infoVM.ServiceName = model.Service.Name;
+            return View(model);
         }
     }
 }

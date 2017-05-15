@@ -12,7 +12,7 @@ namespace Client.ViewModels.Order
         public Guid Id { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "Введите дату по формату")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
         public DateTime OrderTime { get; set; }
 
