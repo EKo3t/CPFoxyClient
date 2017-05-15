@@ -1,6 +1,6 @@
 ﻿@model Client.ViewModels.Manager.CarVM
 @{
-    ViewBag.Title = "Add car";
+    ViewBag.Title = "Добавить автомобиль";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Create", "Car", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new car.</h4>
+    <h4>Создайте новый автомобиль.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">

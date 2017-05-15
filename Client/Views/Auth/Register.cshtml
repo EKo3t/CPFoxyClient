@@ -1,6 +1,6 @@
 ﻿@model Client.ViewModels.Auth.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Регистрация";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -17,7 +17,7 @@
 @using (Html.BeginForm("Register", "Auth", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
+    <h4>Создайте себе аккаунт.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">

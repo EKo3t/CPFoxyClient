@@ -1,28 +1,25 @@
 ﻿
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Главная";
 }
 
 <h2>@ViewBag.Title</h2>
 <div class="list-group" id="listGroupCursor">
     @if (CurrentUser.IsAuthenticated)
     {
-        <a class="list-group-item" id="listGroupCursor" onclick="location.href='@Url.Action("OrderList", "Order")'">List of orders</a>
-        <a class="list-group-item" id="listGroupCursor" onclick="location.href='@Url.Action("Create", "Order")'">Make new order</a>
-    }
-    @if (CurrentUser.IsAuthenticated && CurrentUser.HasRole("Admin") || CurrentUser.HasRole("Manager"))
-    {
-        <a class="list-group-item" onclick="location.href='@Url.Action("Index", "Admin")'">User Table</a>
+        <a class="list-group-item" id="listGroupCursor" onclick="location.href='@Url.Action("OrderList", "Order")'">Список заказов</a>
+        <a class="list-group-item" id="listGroupCursor" onclick="location.href='@Url.Action("Create", "Order")'">Новый заказ</a>
     }
     @if (CurrentUser.IsAuthenticated && CurrentUser.HasRole("Manager") || CurrentUser.HasRole("Manager"))
     {
-        <a class="list-group-item" onclick="location.href='@Url.Action("OrderPanel", "Manager")'">Order panel</a>
-        <a class="list-group-item" onclick="location.href='@Url.Action("DriverPanel", "Manager")'">Driver panel</a>
-        <a class="list-group-item" onclick="location.href='@Url.Action("CarPanel", "Manager")'">Car panel</a>
-        <a class="list-group-item" onclick="location.href='@Url.Action("ServicePanel", "Manager")'">Service panel</a>
+        <a class="list-group-item" onclick="location.href='@Url.Action("Index", "Admin")'">Список пользователей</a>
+        <a class="list-group-item" onclick="location.href='@Url.Action("OrderPanel", "Manager")'">Список заказов</a>
+        <a class="list-group-item" onclick="location.href='@Url.Action("DriverPanel", "Manager")'">Список водителей</a>
+        <a class="list-group-item" onclick="location.href='@Url.Action("CarPanel", "Manager")'">Список автомобилей</a>
+        <a class="list-group-item" onclick="location.href='@Url.Action("ServicePanel", "Manager")'">Список услуг</a>
     }
 </div>
 
 <p>
-    @Html.ActionLink("Change your password", "ChangePassword", "Auth")
+    @Html.ActionLink("Сменить пароль", "ChangePassword", "Auth")
 </p>
