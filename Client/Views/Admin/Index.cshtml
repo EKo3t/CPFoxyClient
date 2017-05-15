@@ -25,16 +25,16 @@
                     <th>@item.LastName</th>
                     <th>@item.MiddleName</th>
                     <th>
-                        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Details", "Admin", new { Email = item.Email})'">
-                            <span class="glyphicons glyphicons-user"></span> Details
+                        <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Details", "Admin", new { Email = item.Email})'">
+                            <span class="glyphicons glyphicons-user"></span> Детально
                         </button>
                         <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("CreateDriver", "Manager", new { email = item.Email})'">
                             <span class="glyphicons glyphicons-user-remove"></span> As driver
                         </button>
                         @if (CurrentUser.IsAuthenticated && CurrentUser.HasRole("Admin"))
                         {
-                            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("DeleteUser", "Admin", new { Email = item.Email })'">
-                                <span class="glyphicons glyphicons-user-remove"></span> Delete
+                            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteUser", "Admin", new { Email = item.Email })'">
+                                <span class="glyphicons glyphicons-user-remove"></span> Удалить
                             </button>
                         }
                     </th>
