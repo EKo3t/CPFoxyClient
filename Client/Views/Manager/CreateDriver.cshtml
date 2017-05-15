@@ -41,6 +41,7 @@
             @Html.DropDownListFor(m => m.CarID, Client.Controllers.ManagerController.getCarSelectList(), new { @style = "height: 35px; width: 350px" })
         </div>
     </div>
+    @Html.HiddenFor(m => m.UserDetails.Email)
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />

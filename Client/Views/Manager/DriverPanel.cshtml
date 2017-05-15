@@ -9,25 +9,27 @@
 <table class="table table-bordered table-condensed table-hover">
     <thead>
         <tr>
-            <td>FirstName</td>
-            <td>LastName</td>
-            <td>MiddleName</td>
-            <td>CarSpec</td>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Отчество</td>
+            <td>Машина</td>
+            <td>Действия</td>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Drivers)
         {
             <tr>
-                <th>@item.UserDetails.FirstName</th>
-                <th>@item.UserDetails.LastName</th>
-                <th>@item.UserDetails.MiddleName</th>
+                <th>@(item.UserDetails == null ? "Нет данных" : item.UserDetails.FirstName)</th>
+                <th>@(item.UserDetails == null ? "Нет данных" : item.UserDetails.LastName)</th>
+                <th>@(item.UserDetails == null ? "Нет данных" : item.UserDetails.MiddleName)</th>
                 <th>@item.Car.CarMark @item.Car.CarModel, @item.Car.CarColor</th>
                 <th>
                     <button type="button"
                             class="btn btn-default"
+                            disabled="true"
                             onclick="location.href='@Url.Action("InBlackList", "Manager", new { Email = item.UserDetails.Email})'">
-                        <span class="glyphicons glyphicons-user"></span> Details
+                        <span class="glyphicons glyphicons-user"></span> InBlackList
                     </button>
                     <button type="button"
                             class="btn btn-default"

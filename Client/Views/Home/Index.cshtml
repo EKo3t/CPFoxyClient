@@ -7,7 +7,7 @@
 <div class="list-group" id="listGroupCursor">
     @if (CurrentUser.IsAuthenticated)
     {
-        <a class="list-group-item" id="listGroupCursor" onclick="location.href='@Url.Action("OrderList", "Order")'">Список заказов</a>
+        <a class="list-group-item" id="listGroupCursor" onclick="location.href='@Url.Action("OrderList", "Order")'">Список заказов пользователя</a>
         <a class="list-group-item" id="listGroupCursor" onclick="location.href='@Url.Action("Create", "Order")'">Новый заказ</a>
     }
     @if (CurrentUser.IsAuthenticated && CurrentUser.HasRole("Manager") || CurrentUser.HasRole("Manager"))

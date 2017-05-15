@@ -12,9 +12,9 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(m => m.OrderTime, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.OrderTime, new { @class = "col-md-2 control-label"})
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.OrderTime, "{0:dd.MM.yyyy HH:mm}", new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.OrderTimeString, new { @class = "form-control"})
         </div>
     </div>
     <div class="form-group">
@@ -35,6 +35,7 @@
             @Html.TextBoxFor(m => m.EndAddress, new { @class = "form-control" })
         </div>
     </div>
+    @Html.HiddenFor(u => u.Email)
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Create" />
@@ -44,4 +45,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content")
 }

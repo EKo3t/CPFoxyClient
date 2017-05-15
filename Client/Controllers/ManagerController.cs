@@ -55,6 +55,10 @@ namespace Client.Controllers
         [HttpGet]
         public ActionResult CreateDriver(string email)
         {
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin") || !CurrentUser.HasRole("Manager"))
+                return RedirectToAction("Index", "Home");
             var values = new Dictionary<string, string> { { "email", email } };
             var response = RequestProvider.CallPostMethodJson("api/Account/UsrInf", values);
             DriverVM model = new DriverVM();
@@ -66,6 +70,7 @@ namespace Client.Controllers
                 model.UserDetails = new UserDetails();
                 if (userDetails != null)
                 {
+                    model.UserDetails.Email = userDetails.Email;
                     model.UserDetails.FirstName = userDetails.FirstName;
                     model.UserDetails.LastName = userDetails.LastName;
                     model.UserDetails.MiddleName = userDetails.MiddleName;
@@ -82,6 +87,11 @@ namespace Client.Controllers
                 return RedirectToAction("Login", "Auth");
             if (!CurrentUser.HasRole("Admin") || !CurrentUser.HasRole("Manager"))
                 return RedirectToAction("Index", "Home");
+            if (model.CarID == null)
+            {
+                ModelState.AddModelError("", "Выберите авто");
+                return View(model);
+            }
             var values = new Dictionary<string, string>
             {
                 { "email", model.UserDetails.Email },
