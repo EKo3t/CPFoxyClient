@@ -53,4 +53,66 @@ div.tab button.active {
 
 a#listGroupCursor {
     cursor: pointer;
+    user-select: none;
 }
+
+th {
+    cursor: pointer;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+/* tables */
+table.tablesorter {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif padding: 4px;
+    background-color: #CDCDCD;
+    margin: 10px 0pt 15px;
+    font-size: 9pt;
+    width: 100%;
+    text-align: left;
+}
+
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+    background-color: #c4c4c4;
+    border: 1px solid #FFF;
+    font-size: 10pt;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif padding: 4px;
+}
+
+table.tablesorter thead tr .header {
+    background-image: url(bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+
+table.tablesorter tbody td {
+    color: #3D3D3D;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
+}
+
+table.tablesorter tbody tr.odd td {
+    background-color: #F0F0F6;
+}
+
+table.tablesorter thead tr .headerSortUp {
+    background-image: url(asc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown {
+    background-image: url(desc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
+} 

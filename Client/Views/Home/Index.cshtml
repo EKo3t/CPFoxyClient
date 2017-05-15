@@ -7,16 +7,17 @@
 <div class="list-group" id="listGroupCursor">
     @if (CurrentUser.IsAuthenticated)
     {
-        <a class="list-group-item" id="listGroupCursor" onclick="location.href='@Url.Action("OrderList", "Order")'">Список заказов пользователя</a>
-        <a class="list-group-item" id="listGroupCursor" onclick="location.href='@Url.Action("Create", "Order")'">Новый заказ</a>
+        <a class="list-group-item noselect" id="listGroupCursor" onclick="location.href='@Url.Action("OrderList", "Order")'">Список заказов пользователя</a>
+        <a class="list-group-item noselect" id="listGroupCursor" onclick="location.href='@Url.Action("Create", "Order")'">Новый заказ</a>
     }
     @if (CurrentUser.IsAuthenticated && CurrentUser.HasRole("Manager") || CurrentUser.HasRole("Manager"))
     {
-        <a class="list-group-item" onclick="location.href='@Url.Action("Index", "Admin")'">Список пользователей</a>
-        <a class="list-group-item" onclick="location.href='@Url.Action("OrderPanel", "Manager")'">Список заказов</a>
-        <a class="list-group-item" onclick="location.href='@Url.Action("DriverPanel", "Manager")'">Список водителей</a>
-        <a class="list-group-item" onclick="location.href='@Url.Action("CarPanel", "Manager")'">Список автомобилей</a>
-        <a class="list-group-item" onclick="location.href='@Url.Action("ServicePanel", "Manager")'">Список услуг</a>
+        <a class="list-group-item noselect" id="listGroupCursor" onclick="location.href='@Url.Action("PieChart", "Order")'">Пирожок заказов</a>
+        <a class="list-group-item noselect" id="listGroupCursor" onclick="location.href='@Url.Action("Index", "Admin")'">Список пользователей</a>
+        <a class="list-group-item noselect" id="listGroupCursor" onclick="location.href='@Url.Action("OrderPanel", "Manager")'">Список заказов</a>
+        <a class="list-group-item noselect" id="listGroupCursor" onclick="location.href='@Url.Action("DriverPanel", "Manager")'">Список водителей</a>
+        <a class="list-group-item noselect" id="listGroupCursor" onclick="location.href='@Url.Action("CarPanel", "Manager")'">Список автомобилей</a>
+        <a class="list-group-item noselect" id="listGroupCursor" onclick="location.href='@Url.Action("ServicePanel", "Manager")'">Список услуг</a>
     }
 </div>
 

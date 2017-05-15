@@ -29,27 +29,8 @@ namespace Client.Controllers
                 return RedirectToAction("Login", "Auth");
             if (!CurrentUser.HasRole("Admin") || !CurrentUser.HasRole("Manager"))
                 return RedirectToAction("Index", "Home");
-            model.Orders = getOrderList();
+            model.Orders = OrderLoader.GetOrderList();
             return View(model);
-        }
-
-        private List<OrderViewModel> getOrderList()
-        {
-            var response = RequestProvider.CallGetMethod("api/Order/AllList");
-            if (response.IsSuccessStatusCode)
-            {
-                string json = response.Content.ReadAsStringAsync().Result;
-                try
-                {
-                    var list = JsonConvert.DeserializeObject<List<OrderViewModel>>(json);
-                    return list;
-                }
-                catch (Exception ex)
-                {
-                    return Enumerable.Empty<OrderViewModel>().ToList();
-                }
-            }
-            return Enumerable.Empty<OrderViewModel>().ToList();
         }
 
         [HttpGet]

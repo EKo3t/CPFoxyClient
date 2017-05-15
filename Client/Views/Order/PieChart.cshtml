@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Pie Chart";
+}
+<head>
+    <script src="~/Scripts/canvasjs.min.js"></script>
+    <script>
+        $(function () {
+            var chart = new CanvasJS.Chart("chartContainer", {
+            title: {
+            text: "Статистика использования услуг такси"
+                },
+                animationEnabled: true,
+                legend: {
+            verticalAlign: "center",
+                    horizontalAlign: "left",
+                    fontSize: 20,
+                    fontFamily: "Helvetica"
+                },
+                theme: "theme2",
+                data: [
+                {
+            type: "pie",
+                    indexLabelFontFamily: "Garamond",
+                    indexLabelFontSize: 20,
+                    indexLabel: "{label} {y}%",
+                    startAngle: -20,
+                    showInLegend: true,
+                    toolTipContent: "{legendText} {y}%",
+                    //dataPoints: [
+                    //    {y: 72.48, legendText: "Google", label: "Google" },
+                    //    {y: 10.39, legendText: "Bing", label: "Bing" },
+                    //    {y: 7.78, legendText: "Yahoo!", label: "Yahoo!" },
+                    //    {y: 7.14, legendText: "Baidu", label: "Baidu" },
+                    //    {y: 0.22, legendText: "Ask", label: "Ask" },
+                    //    {y: 0.15, legendText: "AOL", label: "AOL" },
+                    //    {y: 1.84, legendText: "Others", label: "Others" }
+                    //],
+
+                    //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                    dataPoints: JSON.parse('@Html.Raw(Client.Tools.OrderLoader.GetCharListJson())')
+                }]
+            });
+            chart.render();
+        });
+    </script>
+</head>
+<br />
+<div id="chartContainer">
+
+</div>
+
+

@@ -8,7 +8,6 @@
 @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create your order.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
@@ -26,7 +25,8 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Service, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.ServiceId, Client.Tools.ServiceLoader.GetAllAsSelectList())
+            @Html.DropDownListFor(m => m.ServiceId, Client.Tools.ServiceLoader.GetAllAsSelectList(), 
+                new { @style = "height: 35px; width: 350px" })
         </div>
     </div>
     <div class="form-group">

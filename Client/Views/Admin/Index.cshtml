@@ -5,26 +5,35 @@
 }
 
 <h2>Список пользователей</h2>
+<head>
+    <script src="~/Scripts/jquery.tablesorter.min.js"></script>
+    <script>
+        $(document).ready(function ()
+        {
+            $("#UserTable").tablesorter();
+        }); 
+    </script>
+</head>
 
-<table class="table table-bordered table-condensed table-hover">
+<table class="table table-bordered table-condensed table-hover tablesorter" id="UserTable">
     <thead>
         <tr>
-            <td>Почта</td>
-            <td>Имя</td>
-            <td>Фамилия</td>
-            <td>Отчество</td>
-            <td style="width: 250px">Действия</td>
+            <th class="header headerSortUp headerSortDown">Почта</th>
+            <th class="header">Имя</th>
+            <th class="header">Фамилия</th>
+            <th class="header">Отчество</th>
+            <th style="width: 280px">Действия</th>
         </tr>
     </thead>
     <tbody>            
             @foreach (var item in Model.UserList)
             {
                 <tr>
-                    <th>@item.Email</th>
-                    <th>@item.FirstName</th>
-                    <th>@item.LastName</th>
-                    <th>@item.MiddleName</th>
-                    <th>
+                    <td>@item.Email</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.MiddleName</td>
+                    <td>
                         <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Details", "Admin", new { Email = item.Email})'">
                             <span class="glyphicons glyphicons-user"></span> Детально
                         </button>
@@ -37,7 +46,7 @@
                                 <span class="glyphicons glyphicons-user-remove"></span> Удалить
                             </button>
                         }
-                    </th>
+                    </td>
                 </tr>
             }                
     </tbody>

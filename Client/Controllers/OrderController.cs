@@ -134,5 +134,15 @@ namespace Client.Controllers
                 ModelState.AddModelError("", "Нет свободных водителей");
             return View();
         }
+
+        [HttpGet]
+        public ActionResult PieChart()
+        {
+            if (!CurrentUser.IsAuthenticated)
+                return RedirectToAction("Login", "Auth");
+            if (!CurrentUser.HasRole("Admin") && !CurrentUser.HasRole("Manager"))
+                return RedirectToAction("Index", "Home");
+            return View();
+        }
     }
 }
